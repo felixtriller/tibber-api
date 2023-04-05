@@ -2,6 +2,6 @@
 
 RSpec.describe Tibber::Api do
   it "has a version number" do
-    expect(Tibber::Api::VERSION).not_to be nil
+    expect(Tibber::Api::VERSION).not_to be_nil
   end
 end

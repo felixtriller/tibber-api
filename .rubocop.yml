@@ -26,3 +26,6 @@ Layout/HashAlignment:
 
 Style/RedundantHeredocDelimiterQuotes:
   Enabled: false
+
+Naming/InclusiveLanguage:
+  Enabled: true

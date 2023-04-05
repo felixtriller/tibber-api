@@ -2,9 +2,6 @@
 
 require_relative "api/version"
 
-require "graphql/client"
-require "graphql/client/http"
-
 module Tibber
   module Api
     class << self

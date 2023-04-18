@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.tibber.com/v1-beta/gql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query Tibber__Api__Graphql__Queries__HomesQuery {\n  viewer
+        {\n    homes {\n      id\n      appNickname\n    }\n  }\n}","operationName":"Tibber__Api__Graphql__Queries__HomesQuery"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - tibber-ruby/0.1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer 5K4MVS-OjfWhK_4yrjOlFe1F6kJXPVf7eQYggo8ebAE
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Apr 2023 12:59:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '104'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"68-/9ScBTwfRue5yZRJZSqgOr+vAVg"
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"data":{"viewer":{"homes":[{"id":"96a14971-525a-4420-aae9-e5aedaa129ff","appNickname":"Vitahuset"}]}}}
+
+        '
+  recorded_at: Tue, 18 Apr 2023 12:59:31 GMT
+recorded_with: VCR 6.1.0

@@ -33,19 +33,6 @@ module Tibber
             }
           }
         GRAPHQL
-
-        ConsumptionFragment = Graphql.validation_client.parse <<-'GRAPHQL'
-          fragment on Consumption {
-            from
-            to
-            cost
-            currency
-            unitPrice
-            unitPriceVAT
-            consumption
-            consumptionUnit
-          }
-        GRAPHQL
       end
     end
   end

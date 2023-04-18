@@ -2,56 +2,44 @@
 
 module Tibber
   module Api
+    class Error < StandardError; end
+
     class Client
       attr_reader :client, :context
+      attr_writer :home_id
 
-      def initialize(token: Tibber::Api.configuration.token)
+      def initialize(token: Tibber::Api.configuration.token, home_id: nil)
         @client  = Graphql.client
         @context = { token: token }
+        @home_id = home_id
       end
 
-      def query(query, opts)
-        client.query(query, **opts.merge(context: context))
-      end
-
-      def me
-        # TODO
-      end
-
-      def homes
-        query(Graphql::Queries::HomesQuery)
-      end
-
-      def home(id)
-        query(Graphql::Queries::HomeQuery, variables: { id: id })
+      def home_id
+        @home_id ||= query(Graphql::Queries::HomesQuery).data.viewer.homes.first.id
       end
 
       def consumptions
-        # TODO
+        Consumptions.new(self)
       end
 
-      def consumption(home_id)
-        # TODO
+      def homes
+        Homes.new(self)
       end
 
-      def prices
-        # TODO
+      def query(query, opts = {})
+        client.query(query, **opts.merge(context: context)).tap do |response|
+          handle_errors(response)
+        end
       end
 
-      def price(home_id)
-        # TODO
-      end
+      private
 
-      def subscriptions
-        # TODO
-      end
+      def handle_errors(response)
+        raise Error, response.errors.values.flatten.join(", ") if response.errors.any?
 
-      def subscription(home_id)
-        # TODO
-      end
+        return if response.original_hash["errors"].blank?
 
-      def websocket_subscription_url(home_id)
-        # TODO
+        raise Error, response.original_hash["errors"].map { |e| e["message"] }.join(", ")
       end
     end
   end

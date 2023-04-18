@@ -60,26 +60,32 @@ module Tibber
         GRAPHQL
 
         ConsumptionQuery = Graphql.validation_client.parse <<-'GRAPHQL'
-          query($id: ID!, $resolution: EnergyResolution!, $num: Int!) {
+          query(
+            $home_id: ID!,
+            $resolution: EnergyResolution!,
+            $first: Int,
+            $last: Int,
+            $before: String,
+            $after: String
+          ) {
             viewer {
-              home(id: $id) {
-                consumption(resolution: $resolution, last: $num) {
+              home(id: $home_id) {
+                consumption(
+                  resolution: $resolution,
+                  first: $first,
+                  last: $last,
+                  before: $before,
+                  after: $after
+                ) {
                   nodes {
-                    ...Tibber::Api::Graphql::Fragments::ConsumptionFragment
-                  }
-                }
-              }
-            }
-          }
-        GRAPHQL
-
-        ConsumptionsQuery = Graphql.validation_client.parse <<-'GRAPHQL'
-          query($resolution: EnergyResolution!, $num: Int!) {
-            viewer {
-              homes {
-                consumption(resolution: $resolution, last: $num) {
-                  nodes {
-                    ...Tibber::Api::Graphql::Fragments::ConsumptionFragment
+                    from
+                    to
+                    cost
+                    currency
+                    unitPrice
+                    unitPriceVAT
+                    consumption
+                    consumptionUnit
                   }
                 }
               }

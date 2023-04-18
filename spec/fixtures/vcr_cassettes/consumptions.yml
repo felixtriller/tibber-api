@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.tibber.com/v1-beta/gql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query Tibber__Api__Graphql__Queries__HomesQuery {\n  viewer
+        {\n    homes {\n      id\n      appNickname\n    }\n  }\n}","operationName":"Tibber__Api__Graphql__Queries__HomesQuery"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - tibber-ruby/0.1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer 5K4MVS-OjfWhK_4yrjOlFe1F6kJXPVf7eQYggo8ebAE
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Apr 2023 12:16:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '104'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"68-/9ScBTwfRue5yZRJZSqgOr+vAVg"
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"data":{"viewer":{"homes":[{"id":"96a14971-525a-4420-aae9-e5aedaa129ff","appNickname":"Vitahuset"}]}}}
+
+        '
+  recorded_at: Tue, 18 Apr 2023 12:16:34 GMT
+- request:
+    method: post
+    uri: https://api.tibber.com/v1-beta/gql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query Tibber__Api__Graphql__Queries__ConsumptionQuery($home_id:
+        ID!, $resolution: EnergyResolution!, $last: Int!) {\n  viewer {\n    home(id:
+        $home_id) {\n      consumption(resolution: $resolution, last: $last) {\n        nodes
+        {\n          from\n          to\n          cost\n          currency\n          unitPrice\n          unitPriceVAT\n          consumption\n          consumptionUnit\n        }\n      }\n    }\n  }\n}","variables":{"resolution":"HOURLY","last":10,"home_id":"96a14971-525a-4420-aae9-e5aedaa129ff"},"operationName":"Tibber__Api__Graphql__Queries__ConsumptionQuery"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - tibber-ruby/0.1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer 5K4MVS-OjfWhK_4yrjOlFe1F6kJXPVf7eQYggo8ebAE
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Apr 2023 12:16:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"7e0-A5l0/s9bC+fg7rf9TRTT+0nT8aM"
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"viewer":{"home":{"consumption":{"nodes":[{"from":"2023-04-18T04:00:00.000+02:00","to":"2023-04-18T05:00:00.000+02:00","cost":1.933071075,"currency":"SEK","unitPrice":1.208925,"unitPriceVAT":0.241785,"consumption":1.599,"consumptionUnit":"kWh"},{"from":"2023-04-18T05:00:00.000+02:00","to":"2023-04-18T06:00:00.000+02:00","cost":1.9751469,"currency":"SEK","unitPrice":1.323825,"unitPriceVAT":0.264765,"consumption":1.492,"consumptionUnit":"kWh"},{"from":"2023-04-18T06:00:00.000+02:00","to":"2023-04-18T07:00:00.000+02:00","cost":0.729946875,"currency":"SEK","unitPrice":1.6078125,"unitPriceVAT":0.3215625,"consumption":0.454,"consumptionUnit":"kWh"},{"from":"2023-04-18T07:00:00.000+02:00","to":"2023-04-18T08:00:00.000+02:00","cost":0,"currency":"SEK","unitPrice":2.0435875,"unitPriceVAT":0.4087175,"consumption":0,"consumptionUnit":"kWh"},{"from":"2023-04-18T08:00:00.000+02:00","to":"2023-04-18T09:00:00.000+02:00","cost":0,"currency":"SEK","unitPrice":2.2464375,"unitPriceVAT":0.4492875,"consumption":0,"consumptionUnit":"kWh"},{"from":"2023-04-18T09:00:00.000+02:00","to":"2023-04-18T10:00:00.000+02:00","cost":0,"currency":"SEK","unitPrice":1.8293875,"unitPriceVAT":0.3658775,"consumption":0,"consumptionUnit":"kWh"},{"from":"2023-04-18T10:00:00.000+02:00","to":"2023-04-18T11:00:00.000+02:00","cost":0,"currency":"SEK","unitPrice":1.57745,"unitPriceVAT":0.31549,"consumption":0,"consumptionUnit":"kWh"},{"from":"2023-04-18T11:00:00.000+02:00","to":"2023-04-18T12:00:00.000+02:00","cost":0,"currency":"SEK","unitPrice":1.4014125,"unitPriceVAT":0.2802825,"consumption":0,"consumptionUnit":"kWh"},{"from":"2023-04-18T12:00:00.000+02:00","to":"2023-04-18T13:00:00.000+02:00","cost":0.1872781625,"currency":"SEK","unitPrice":1.3096375,"unitPriceVAT":0.2619275,"consumption":0.143,"consumptionUnit":"kWh"},{"from":"2023-04-18T13:00:00.000+02:00","to":"2023-04-18T14:00:00.000+02:00","cost":null,"currency":"SEK","unitPrice":1.20225,"unitPriceVAT":0.24045,"consumption":null,"consumptionUnit":"kWh"}]}}}}}
+
+        '
+  recorded_at: Tue, 18 Apr 2023 12:16:34 GMT
+recorded_with: VCR 6.1.0

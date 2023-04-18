@@ -29,3 +29,11 @@ Style/RedundantHeredocDelimiterQuotes:
 
 Naming/InclusiveLanguage:
   Enabled: true
+
+inherit_mode:
+  merge:
+    - AllowedNames
+
+Naming/MethodParameterName:
+  AllowedNames:
+    - n

@@ -23,6 +23,12 @@ end
 
 require "tibber/api/configuration"
 require "tibber/api/client"
+require "tibber/api/client/base"
+require "tibber/api/client/consumptions"
+require "tibber/api/client/homes"
+require "tibber/api/data/base"
+require "tibber/api/data/consumption"
+require "tibber/api/data/home"
 require "tibber/api/graphql"
 require "tibber/api/graphql/fragments"
 require "tibber/api/graphql/queries"

@@ -9,8 +9,8 @@ require "rubocop/rake_task"
 
 RuboCop::RakeTask.new
 
-require "tibber/api/rake_task"
+require "tibber/rake_task"
 
-Tibber::Api::RakeTask.new
+Tibber::RakeTask.new
 
 task default: %i[spec rubocop]

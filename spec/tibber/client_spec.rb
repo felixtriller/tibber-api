@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Tibber::Api::Client do
+RSpec.describe Tibber::Client do
   let(:client) do
     described_class.new(token: "5K4MVS-OjfWhK_4yrjOlFe1F6kJXPVf7eQYggo8ebAE")
   end

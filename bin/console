@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
-require "tibber/api"
+require "tibber"
 require "dotenv/load"
 
 # You can add fixtures and/or initialization code here to make experimenting
@@ -13,7 +13,7 @@ require "dotenv/load"
 # Pry.start
 
 if ENV["TIBBER_TOKEN"]
-  Tibber::Api.configure do |config|
+  Tibber.configure do |config|
     config.token = ENV["TIBBER_TOKEN"]
   end
 end

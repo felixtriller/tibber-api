@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/tibber/api/version"
+require_relative "lib/tibber/version"
 
 Gem::Specification.new do |spec|
   spec.name = "tibber-api"
-  spec.version = Tibber::Api::VERSION
+  spec.version = Tibber::VERSION
   spec.authors = ["Felix Triller"]
   spec.email = ["felixtriller@gmail.com"]
 
@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "graphql-client", "~> 0.18"
+  spec.add_dependency "zeitwerk", "~> 2.6"
 
   spec.metadata["rubygems_mfa_required"] = "true"
 end

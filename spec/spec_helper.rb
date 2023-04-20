@@ -6,7 +6,7 @@ SimpleCov.start
 require "simplecov-cobertura"
 SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
 
-require "tibber/api"
+require "tibber"
 require "vcr"
 
 VCR.configure do |c|

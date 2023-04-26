@@ -18,7 +18,16 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+```rb
+tibber = Tibber::Client.new(token: <token>)
+tibber.consumptions.last(100)
+```
+
+```rb
+Tibber.configure do |config|
+  config.token = '<token>' # Or ENV["TIBBER_TOKEN"]
+end
+```
 
 ## Development
 

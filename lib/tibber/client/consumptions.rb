@@ -3,8 +3,6 @@
 module Tibber
   class Client
     class Consumptions < Base
-      DEAULT_LIMIT = 100
-
       def list(first: nil, last: nil, resolution: "HOURLY", before: nil, after: nil)
         query(
           Graphql::Queries::ConsumptionQuery,
@@ -16,11 +14,11 @@ module Tibber
         end
       end
 
-      def last(n = DEAULT_LIMIT, resolution: "HOURLY", before: nil, after: nil)
+      def last(n = 1, resolution: "HOURLY", before: nil, after: nil)
         list(resolution: resolution, last: n, before: before, after: after)
       end
 
-      def first(n = DEAULT_LIMIT, resolution: "HOURLY", before: nil, after: nil)
+      def first(n = 1, resolution: "HOURLY", before: nil, after: nil)
         list(resolution: resolution, first: n, before: before, after: after)
       end
     end

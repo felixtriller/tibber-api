@@ -9,6 +9,12 @@ module Tibber
         end
       end
 
+      def attributes
+        instance_variables.to_h do |var|
+          [var[1..].to_sym, instance_variable_get(var)]
+        end
+      end
+
       class << self
         def from_graphql(data)
           new(**data.to_h.transform_keys(&:underscore))

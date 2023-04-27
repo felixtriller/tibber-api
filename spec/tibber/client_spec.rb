@@ -64,4 +64,16 @@ RSpec.describe Tibber::Client do
       end
     end
   end
+
+  describe ".to_cursor" do
+    it "returns a cursor" do
+      date_time = DateTime.parse("2023-04-01T00:00:00.000+02:00")
+
+      expect(described_class.to_cursor(date_time)).to eq("MjAyMy0wNC0wMVQwMDowMDowMCswMjowMA==")
+    end
+
+    it "returns for nil param" do
+      expect(described_class.to_cursor(nil)).to be_nil
+    end
+  end
 end

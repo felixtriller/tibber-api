@@ -31,6 +31,14 @@ module Tibber
       end
     end
 
+    class << self
+      def to_cursor(date_time)
+        return if date_time.nil?
+
+        Base64.strict_encode64(date_time.iso8601)
+      end
+    end
+
     private
 
     def handle_errors(response)

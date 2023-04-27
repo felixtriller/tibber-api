@@ -14,7 +14,7 @@ module Tibber
     end
 
     def home_id
-      @home_id ||= query(Graphql::Queries::HomesQuery).data.viewer.homes.first.id
+      @home_id ||= homes.first.id
     end
 
     def consumptions

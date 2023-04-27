@@ -33,7 +33,7 @@ module Tibber
 
     class << self
       def to_cursor(date_time)
-        return if date_time.nil?
+        return date_time unless date_time.is_a?(DateTime)
 
         Base64.strict_encode64(date_time.iso8601)
       end

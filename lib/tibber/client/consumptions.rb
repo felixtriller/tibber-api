@@ -4,6 +4,9 @@ module Tibber
   class Client
     class Consumptions < Base
       def list(first: nil, last: nil, resolution: "HOURLY", before: nil, after: nil)
+        before = Client.to_cursor(before)
+        after  = Client.to_cursor(after)
+
         query(
           Graphql::Queries::ConsumptionQuery,
           home_id: client.home_id, first: first, last: last, resolution: resolution, before: before, after: after

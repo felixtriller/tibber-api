@@ -6,7 +6,7 @@ RSpec.describe Tibber::Client do
   end
 
   describe "#consumptions" do
-    it "returns 10 records" do
+    it "returns an array with 10 records" do
       VCR.use_cassette("consumptions") do
         result = client.consumptions.last(10)
 
@@ -19,6 +19,14 @@ RSpec.describe Tibber::Client do
         result = client.consumptions.last(10)
 
         expect(result.first.to).to be_a DateTime
+      end
+    end
+
+    it "returns only one record" do
+      VCR.use_cassette("consumptions_1") do
+        result = client.consumptions.last
+
+        expect(result.class).to eq(Tibber::Data::Consumption)
       end
     end
   end

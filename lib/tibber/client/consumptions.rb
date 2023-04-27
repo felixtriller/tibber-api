@@ -14,12 +14,16 @@ module Tibber
         end
       end
 
-      def last(n = 1, resolution: "HOURLY", before: nil, after: nil)
-        list(resolution: resolution, last: n, before: before, after: after)
+      def last(limit = nil, resolution: "HOURLY", before: nil, after: nil)
+        list(resolution: resolution, last: limit || 1, before: before, after: after).then do |arr|
+          limit ? arr : arr.first
+        end
       end
 
-      def first(n = 1, resolution: "HOURLY", before: nil, after: nil)
-        list(resolution: resolution, first: n, before: before, after: after)
+      def first(limit = nil, resolution: "HOURLY", before: nil, after: nil)
+        list(resolution: resolution, first: limit || 1, before: before, after: after).then do |arr|
+          limit ? arr : arr.first
+        end
       end
     end
   end

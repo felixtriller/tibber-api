@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 27 Apr 2023 10:38:42 GMT
+      - Thu, 27 Apr 2023 10:44:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -44,7 +44,7 @@ http_interactions:
       string: '{"data":{"viewer":{"homes":[{"id":"96a14971-525a-4420-aae9-e5aedaa129ff","appNickname":"Vitahuset"}]}}}
 
         '
-  recorded_at: Thu, 27 Apr 2023 10:38:42 GMT
+  recorded_at: Thu, 27 Apr 2023 10:44:23 GMT
 - request:
     method: post
     uri: https://api.tibber.com/v1-beta/gql
@@ -54,7 +54,7 @@ http_interactions:
         ID!, $resolution: EnergyResolution!, $first: Int, $last: Int, $before: String,
         $after: String) {\n  viewer {\n    home(id: $home_id) {\n      consumption(resolution:
         $resolution, first: $first, last: $last, before: $before, after: $after) {\n        nodes
-        {\n          from\n          to\n          cost\n          currency\n          unitPrice\n          unitPriceVAT\n          consumption\n          consumptionUnit\n        }\n      }\n    }\n  }\n}","variables":{"home_id":"96a14971-525a-4420-aae9-e5aedaa129ff","first":1,"resolution":"HOURLY"},"operationName":"Tibber__Graphql__Queries__ConsumptionQuery"}'
+        {\n          from\n          to\n          cost\n          currency\n          unitPrice\n          unitPriceVAT\n          consumption\n          consumptionUnit\n        }\n      }\n    }\n  }\n}","variables":{"home_id":"96a14971-525a-4420-aae9-e5aedaa129ff","resolution":"HOURLY"},"operationName":"Tibber__Graphql__Queries__ConsumptionQuery"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -72,11 +72,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 27 Apr 2023 10:38:46 GMT
+      - Thu, 27 Apr 2023 10:44:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '261'
+      - '296'
       Connection:
       - keep-alive
       X-Powered-By:
@@ -84,13 +84,14 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Etag:
-      - W/"105-LdSc1qt+6fdamwQk5k7qEDnEDI0"
+      - W/"128-PZoyQfuET7IQzN8seHPfiAhAVgA"
       Vary:
       - Accept-Encoding
     body:
       encoding: UTF-8
-      string: '{"data":{"viewer":{"home":{"consumption":{"nodes":[{"from":"2018-11-02T00:00:00.000+01:00","to":"2018-11-02T01:00:00.000+01:00","cost":1.984618125,"currency":"SEK","unitPrice":0.6300375,"unitPriceVAT":0.1260075,"consumption":3.15,"consumptionUnit":"kWh"}]}}}}}
+      string: '{"errors":[{"message":"You must provide a \"first\" or \"last\" value
+        to properly paginate the \"consumption\" connection.","locations":[{"line":4,"column":7}],"path":["viewer","home","consumption"],"extensions":{"code":"INTERNAL_SERVER_ERROR"}}],"data":{"viewer":{"home":{"consumption":null}}}}
 
         '
-  recorded_at: Thu, 27 Apr 2023 10:38:46 GMT
+  recorded_at: Thu, 27 Apr 2023 10:44:23 GMT
 recorded_with: VCR 6.1.0

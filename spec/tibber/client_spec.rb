@@ -24,7 +24,7 @@ RSpec.describe Tibber::Client do
 
     it "returns only one record" do
       VCR.use_cassette("consumptions_1") do
-        result = client.consumptions.last
+        result = client.consumptions.first
 
         expect(result.class).to eq(Tibber::Data::Consumption)
       end
@@ -45,6 +45,22 @@ RSpec.describe Tibber::Client do
         result = client.homes.list
 
         expect(result.first.id).to eq("96a14971-525a-4420-aae9-e5aedaa129ff")
+      end
+    end
+  end
+
+  describe "error handling" do
+    it "catches parameter errors" do
+      VCR.use_cassette("consumptions_error") do
+        expect do
+          client.consumptions.last(resolution: "BIWEEKLY")
+        end.to raise_error(Tibber::Error, /invalid value/)
+      end
+    end
+
+    it "catches hidden errors" do
+      VCR.use_cassette("consumptions_hidden_error") do
+        expect { client.consumptions.list }.to raise_error(Tibber::Error, /"first" or "last"/)
       end
     end
   end

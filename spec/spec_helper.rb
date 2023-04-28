@@ -6,7 +6,7 @@ SimpleCov.start do
 end
 
 require "simplecov-cobertura"
-# SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
 
 require "tibber"
 require "vcr"

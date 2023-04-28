@@ -44,6 +44,7 @@ module Tibber
 
       private
 
+      # :nocov:
       def path
         raise NotImplementedError, "Implement in sub class"
       end
@@ -55,6 +56,7 @@ module Tibber
       def data_class
         raise NotImplementedError, "Implement in sub class"
       end
+      # :nocov:
     end
   end
 end

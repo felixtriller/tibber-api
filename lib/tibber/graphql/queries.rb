@@ -65,7 +65,8 @@ module Tibber
           $first: Int,
           $last: Int,
           $before: String,
-          $after: String
+          $after: String,
+          $filter_empty_nodes: Boolean
         ) {
           viewer {
             home(id: $home_id) {
@@ -74,7 +75,8 @@ module Tibber
                 first: $first,
                 last: $last,
                 before: $before,
-                after: $after
+                after: $after,
+                filterEmptyNodes: $filter_empty_nodes
               ) {
                 nodes {
                   from

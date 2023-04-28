@@ -21,6 +21,10 @@ module Tibber
       Consumptions.new(self)
     end
 
+    def productions
+      Productions.new(self)
+    end
+
     def homes
       Homes.new(self)
     end

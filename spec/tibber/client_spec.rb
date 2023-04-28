@@ -31,6 +31,32 @@ RSpec.describe Tibber::Client do
     end
   end
 
+  describe "#productions" do
+    it "returns an array with 10 records" do
+      VCR.use_cassette("productions") do
+        result = client.productions.last(10)
+
+        expect(result.length).to eq(10)
+      end
+    end
+
+    it "returns a record with a datetime attribute" do
+      VCR.use_cassette("productions") do
+        result = client.productions.last(10)
+
+        expect(result.first.to).to be_a DateTime
+      end
+    end
+
+    it "returns only one record" do
+      VCR.use_cassette("productions_1") do
+        result = client.productions.last
+
+        expect(result.class).to eq(Tibber::Data::Production)
+      end
+    end
+  end
+
   describe "#homes" do
     it "returns 1 record" do
       VCR.use_cassette("homes") do

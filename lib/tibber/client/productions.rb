@@ -2,19 +2,19 @@
 
 module Tibber
   class Client
-    class Consumptions < Energy
+    class Productions < Energy
       private
 
       def query_class
-        Graphql::Queries::ConsumptionQuery
+        Graphql::Queries::ProductionQuery
       end
 
       def data_class
-        Data::Consumption
+        Data::Production
       end
 
       def path
-        :consumption
+        :production
       end
     end
   end

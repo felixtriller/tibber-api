@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ModuleLength
 module Tibber
   module Graphql
     module Queries
@@ -93,6 +94,43 @@ module Tibber
           }
         }
       GRAPHQL
+
+      ProductionQuery = Graphql.validation_client.parse <<-'GRAPHQL'
+        query(
+          $home_id: ID!,
+          $resolution: EnergyResolution!,
+          $first: Int,
+          $last: Int,
+          $before: String,
+          $after: String,
+          $filter_empty_nodes: Boolean
+        ) {
+          viewer {
+            home(id: $home_id) {
+              production(
+                resolution: $resolution,
+                first: $first,
+                last: $last,
+                before: $before,
+                after: $after,
+                filterEmptyNodes: $filter_empty_nodes
+              ) {
+                nodes {
+                  from
+                  to
+                  profit
+                  currency
+                  unitPrice
+                  unitPriceVAT
+                  production
+                  productionUnit
+                }
+              }
+            }
+          }
+        }
+      GRAPHQL
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength

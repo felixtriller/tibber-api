@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.tibber.com/v1-beta/gql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query Tibber__Graphql__Queries__HomesQuery {\n  viewer {\n    homes
+        {\n      id\n      appNickname\n    }\n  }\n}","operationName":"Tibber__Graphql__Queries__HomesQuery"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - tibber-ruby/0.1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer 5K4MVS-OjfWhK_4yrjOlFe1F6kJXPVf7eQYggo8ebAE
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 28 Apr 2023 11:06:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '104'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"68-/9ScBTwfRue5yZRJZSqgOr+vAVg"
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"data":{"viewer":{"homes":[{"id":"96a14971-525a-4420-aae9-e5aedaa129ff","appNickname":"Vitahuset"}]}}}
+
+        '
+  recorded_at: Fri, 28 Apr 2023 11:06:30 GMT
+- request:
+    method: post
+    uri: https://api.tibber.com/v1-beta/gql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query Tibber__Graphql__Queries__PricesQuery($home_id: ID!,
+        $resolution: PriceResolution!, $first: Int, $last: Int, $before: String, $after:
+        String) {\n  viewer {\n    home(id: $home_id) {\n      currentSubscription
+        {\n        priceInfo {\n          range(resolution: $resolution, first: $first,
+        last: $last, before: $before, after: $after) {\n            nodes {\n              total\n              energy\n              tax\n              startsAt\n              currency\n              level\n            }\n          }\n        }\n      }\n    }\n  }\n}","variables":{"home_id":"96a14971-525a-4420-aae9-e5aedaa129ff","last":10,"resolution":"HOURLY"},"operationName":"Tibber__Graphql__Queries__PricesQuery"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - tibber-ruby/0.1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer 5K4MVS-OjfWhK_4yrjOlFe1F6kJXPVf7eQYggo8ebAE
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 28 Apr 2023 11:06:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"556-rMyZxMsv92DON3FG7BEK2DJ2lhM"
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"viewer":{"home":{"currentSubscription":{"priceInfo":{"range":{"nodes":[{"total":1.2549,"energy":0.9099,"tax":0.345,"startsAt":"2023-04-28T03:00:00.000+02:00","currency":"SEK","level":"EXPENSIVE"},{"total":1.36,"energy":0.994,"tax":0.366,"startsAt":"2023-04-28T04:00:00.000+02:00","currency":"SEK","level":"EXPENSIVE"},{"total":1.4708,"energy":1.0826,"tax":0.3882,"startsAt":"2023-04-28T05:00:00.000+02:00","currency":"SEK","level":"EXPENSIVE"},{"total":1.6529,"energy":1.2283,"tax":0.4246,"startsAt":"2023-04-28T06:00:00.000+02:00","currency":"SEK","level":"VERY_EXPENSIVE"},{"total":1.8237,"energy":1.365,"tax":0.4587,"startsAt":"2023-04-28T07:00:00.000+02:00","currency":"SEK","level":"VERY_EXPENSIVE"},{"total":1.9208,"energy":1.4427,"tax":0.4781,"startsAt":"2023-04-28T08:00:00.000+02:00","currency":"SEK","level":"VERY_EXPENSIVE"},{"total":1.784,"energy":1.3332,"tax":0.4508,"startsAt":"2023-04-28T09:00:00.000+02:00","currency":"SEK","level":"VERY_EXPENSIVE"},{"total":1.6771,"energy":1.2477,"tax":0.4294,"startsAt":"2023-04-28T10:00:00.000+02:00","currency":"SEK","level":"VERY_EXPENSIVE"},{"total":1.6273,"energy":1.2079,"tax":0.4194,"startsAt":"2023-04-28T11:00:00.000+02:00","currency":"SEK","level":"EXPENSIVE"},{"total":1.5687,"energy":1.161,"tax":0.4077,"startsAt":"2023-04-28T12:00:00.000+02:00","currency":"SEK","level":"EXPENSIVE"}]}}}}}}}
+
+        '
+  recorded_at: Fri, 28 Apr 2023 11:06:30 GMT
+recorded_with: VCR 6.1.0

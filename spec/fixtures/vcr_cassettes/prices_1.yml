@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.tibber.com/v1-beta/gql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query Tibber__Graphql__Queries__HomesQuery {\n  viewer {\n    homes
+        {\n      id\n      appNickname\n    }\n  }\n}","operationName":"Tibber__Graphql__Queries__HomesQuery"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - tibber-ruby/0.1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer 5K4MVS-OjfWhK_4yrjOlFe1F6kJXPVf7eQYggo8ebAE
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 28 Apr 2023 13:30:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '104'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"68-/9ScBTwfRue5yZRJZSqgOr+vAVg"
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"data":{"viewer":{"homes":[{"id":"96a14971-525a-4420-aae9-e5aedaa129ff","appNickname":"Vitahuset"}]}}}
+
+        '
+  recorded_at: Fri, 28 Apr 2023 13:30:48 GMT
+- request:
+    method: post
+    uri: https://api.tibber.com/v1-beta/gql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query Tibber__Graphql__Queries__PricesQuery($home_id: ID!,
+        $resolution: PriceResolution!, $first: Int, $last: Int, $before: String, $after:
+        String) {\n  viewer {\n    home(id: $home_id) {\n      currentSubscription
+        {\n        priceInfo {\n          range(resolution: $resolution, first: $first,
+        last: $last, before: $before, after: $after) {\n            nodes {\n              total\n              energy\n              tax\n              startsAt\n              currency\n              level\n            }\n          }\n        }\n      }\n    }\n  }\n}","variables":{"home_id":"96a14971-525a-4420-aae9-e5aedaa129ff","first":1,"resolution":"HOURLY"},"operationName":"Tibber__Graphql__Queries__PricesQuery"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - tibber-ruby/0.1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer 5K4MVS-OjfWhK_4yrjOlFe1F6kJXPVf7eQYggo8ebAE
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 28 Apr 2023 13:30:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '208'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"d0-hTH/vA6w/SP5rVLopfn/7v0X5x4"
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"data":{"viewer":{"home":{"currentSubscription":{"priceInfo":{"range":{"nodes":[{"total":0.63,"energy":0.435,"tax":0.195,"startsAt":"2018-11-02T00:00:00.000+01:00","currency":"SEK","level":"NORMAL"}]}}}}}}}
+
+        '
+  recorded_at: Fri, 28 Apr 2023 13:30:49 GMT
+recorded_with: VCR 6.1.0

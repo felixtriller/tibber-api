@@ -10,7 +10,7 @@ module Tibber
       RESOLUTION_ANNUAL  = "ANNUAL"
 
       # rubocop:disable Metrics/MethodLength, Metrics/ParameterLists
-      def list(first: nil, last: nil, resolution: "HOURLY", before: nil, after: nil, filter_empty_nodes: nil)
+      def list(first: nil, last: nil, resolution: RESOLUTION_HOURLY, before: nil, after: nil, filter_empty_nodes: nil)
         query(
           query_class,
           home_id:            client.home_id,
@@ -28,14 +28,14 @@ module Tibber
       end
       # rubocop:enable Metrics/MethodLength, Metrics/ParameterLists
 
-      def last(limit = nil, resolution: "HOURLY", before: nil, after: nil, filter_empty_nodes: nil)
+      def last(limit = nil, resolution: RESOLUTION_HOURLY, before: nil, after: nil, filter_empty_nodes: nil)
         list(resolution: resolution, last: limit || 1, before: before, after: after,
              filter_empty_nodes: filter_empty_nodes).then do |arr|
           limit ? arr : arr.first
         end
       end
 
-      def first(limit = nil, resolution: "HOURLY", before: nil, after: nil, filter_empty_nodes: nil)
+      def first(limit = nil, resolution: RESOLUTION_HOURLY, before: nil, after: nil, filter_empty_nodes: nil)
         list(resolution: resolution, first: limit || 1, before: before, after: after,
              filter_empty_nodes: filter_empty_nodes).then do |arr|
           limit ? arr : arr.first

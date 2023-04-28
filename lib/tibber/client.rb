@@ -25,6 +25,10 @@ module Tibber
       Productions.new(self)
     end
 
+    def prices
+      Prices.new(self)
+    end
+
     def homes
       Homes.new(self)
     end

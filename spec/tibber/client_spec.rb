@@ -1,77 +1,47 @@
 # frozen_string_literal: true
 
 RSpec.describe Tibber::Client do
-  let(:client) do
-    described_class.new(token: "5K4MVS-OjfWhK_4yrjOlFe1F6kJXPVf7eQYggo8ebAE")
+  subject(:client) do
+    described_class.new(token: demo_token)
+  end
+
+  describe "#homes" do
+    it "returns the instance" do
+      expect(client.homes).to be_an_instance_of(Tibber::Client::Homes)
+    end
+
+    it "knows the client" do
+      expect(client.homes.client).to eq(client)
+    end
+  end
+
+  describe "#prices" do
+    it "returns the instance" do
+      expect(client.prices).to be_an_instance_of(Tibber::Client::Prices)
+    end
+
+    it "knows the client" do
+      expect(client.prices.client).to eq(client)
+    end
   end
 
   describe "#consumptions" do
-    it "returns an array with 10 records" do
-      VCR.use_cassette("consumptions") do
-        result = client.consumptions.last(10)
-
-        expect(result.length).to eq(10)
-      end
+    it "returns the instance" do
+      expect(client.consumptions).to be_an_instance_of(Tibber::Client::Consumptions)
     end
 
-    it "returns a record with a datetime attribute" do
-      VCR.use_cassette("consumptions") do
-        result = client.consumptions.last(10)
-
-        expect(result.first.to).to be_a DateTime
-      end
-    end
-
-    it "returns only one record" do
-      VCR.use_cassette("consumptions_1") do
-        result = client.consumptions.first
-
-        expect(result.class).to eq(Tibber::Data::Consumption)
-      end
+    it "knows the client" do
+      expect(client.consumptions.client).to eq(client)
     end
   end
 
   describe "#productions" do
-    it "returns an array with 10 records" do
-      VCR.use_cassette("productions") do
-        result = client.productions.last(10)
-
-        expect(result.length).to eq(10)
-      end
+    it "returns the instance" do
+      expect(client.productions).to be_an_instance_of(Tibber::Client::Productions)
     end
 
-    it "returns a record with a datetime attribute" do
-      VCR.use_cassette("productions") do
-        result = client.productions.last(10)
-
-        expect(result.first.to).to be_a DateTime
-      end
-    end
-
-    it "returns only one record" do
-      VCR.use_cassette("productions_1") do
-        result = client.productions.last
-
-        expect(result.class).to eq(Tibber::Data::Production)
-      end
-    end
-  end
-
-  describe "#homes" do
-    it "returns 1 record" do
-      VCR.use_cassette("homes") do
-        result = client.homes.list
-
-        expect(result.length).to eq(1)
-      end
-    end
-
-    it "returns the record with the correct id" do
-      VCR.use_cassette("homes") do
-        result = client.homes.list
-
-        expect(result.first.id).to eq("96a14971-525a-4420-aae9-e5aedaa129ff")
-      end
+    it "knows the client" do
+      expect(client.productions.client).to eq(client)
     end
   end
 

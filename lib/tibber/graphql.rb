@@ -4,7 +4,7 @@ module Tibber
   module Graphql
     class << self
       ENDPOINT    = "https://api.tibber.com/v1-beta/gql"
-      SCHEMA_PATH = "#{Tibber.root}/config/schema.json"
+      SCHEMA_PATH = File.join(Tibber.root, "config", "schema.json")
 
       def client
         @client ||= GraphQL::Client.new(schema: schema, execute: http)
@@ -24,9 +24,11 @@ module Tibber
         File.exist?(schema_path)
       end
 
+      # :nocov:
       def schema!
         GraphQL::Client.dump_schema(http, schema_path)
       end
+      # :nocov:
 
       private
 

@@ -12,7 +12,7 @@ module Tibber
       private
 
       def query(query, variables = {}, &block)
-        variables.reject! { |_k, v| v.blank? }
+        variables.compact!
 
         client.query(query, variables: variables).then do |result|
           block.call(result)

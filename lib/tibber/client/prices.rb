@@ -6,6 +6,11 @@ module Tibber
       RESOLUTION_HOURLY  = "HOURLY"
       RESOLUTION_DAILY   = "DAILY"
 
+      RESOLUTIONS = [
+        RESOLUTION_HOURLY,
+        RESOLUTION_DAILY
+      ].freeze
+
       def current
         query(Graphql::Queries::PriceInfosQuery, home_id: client.home_id, last: 0) do |result|
           Data::Price.from_graphql(result.data.viewer.home.current_subscription.price_info.current)

@@ -9,6 +9,14 @@ module Tibber
       RESOLUTION_MONTHLY = "MONTHLY"
       RESOLUTION_ANNUAL  = "ANNUAL"
 
+      RESOLUTIONS = [
+        RESOLUTION_HOURLY,
+        RESOLUTION_DAILY,
+        RESOLUTION_WEEKLY,
+        RESOLUTION_MONTHLY,
+        RESOLUTION_ANNUAL
+      ].freeze
+
       # rubocop:disable Metrics/MethodLength, Metrics/ParameterLists
       def list(first: nil, last: nil, resolution: RESOLUTION_HOURLY, before: nil, after: nil, filter_empty_nodes: nil)
         query(
